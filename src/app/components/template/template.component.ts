@@ -7,6 +7,11 @@ import { NgForm } from '@angular/forms';
   styles: []
 })
 export class TemplateComponent {
+  user: Object = {
+    name: 'Yomar',
+    lastname: 'Miranda',
+    email: 'yomar@gmail.com'
+  };
 
   constructor() { }
 

@@ -13,7 +13,7 @@
                placeholder="Nombre"
                name="name"
                minlength="5"
-               ngModel
+               [ngModel]="user.name"
                required>
       </div>
     </div>
@@ -26,7 +26,7 @@
                type="text"
                placeholder="Apellido"
                name="lastname"
-               ngModel
+               [ngModel]="user.lastname"
                required>
       </div>
     </div>
@@ -41,7 +41,7 @@
              type="email"
              placeholder="Correo electrónico"
              name="email"
-             ngModel
+             [ngModel]="user.email"
              required>
     </div>
   </div>
