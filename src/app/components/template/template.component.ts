@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
   styles: []
 })
-export class TemplateComponent implements OnInit {
+export class TemplateComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  save(template: NgForm) {
+    console.log('Form sended');
+    console.log('Template => ', template);
+    console.log('Value => ', template.value);
   }
 
 }

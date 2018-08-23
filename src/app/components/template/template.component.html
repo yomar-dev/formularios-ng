@@ -1,3 +1,60 @@
-<p>
-  template works!
-</p>
+<h4>Formularios <small>template</small></h4>
+<hr>
+<form (ngSubmit)="save(template)" #template="ngForm" novalidate>
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               name="name"
+               minlength="5"
+               ngModel
+               required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               name="lastname"
+               ngModel
+               required>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             name="email"
+             ngModel
+             required>
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
