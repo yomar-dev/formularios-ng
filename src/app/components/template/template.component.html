@@ -1,6 +1,6 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form (ngSubmit)="save(template)" #template="ngForm" novalidate>
+<form (ngSubmit)="save(template)" #template="ngForm" novalidate autocomplete="off">
 
   <div>
 
@@ -12,9 +12,16 @@
                type="text"
                placeholder="Nombre"
                name="name"
-               minlength="5"
+               minlength="4"
                [(ngModel)]="user.name"
-               required>
+               required
+               #name="ngModel">
+            <div *ngIf="name.errors?.required">
+                This field are required.
+            </div>
+            <div *ngIf="name.errors?.minlength">
+                You must enter at least {{ name.errors.minlength.requiredLength }} characters.
+            </div>
       </div>
     </div>
 
@@ -42,6 +49,7 @@
              placeholder="Correo electrónico"
              name="email"
              [(ngModel)]="user.email"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
              required>
     </div>
   </div>
