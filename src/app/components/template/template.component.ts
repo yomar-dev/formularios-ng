@@ -14,8 +14,44 @@ export class TemplateComponent {
   user: Object = {
     name: null,
     lastname: null,
-    email: null
+    email: null,
+    country: '',
+    gender: 'Male',
+    agree: false
   };
+
+  countries = [{
+    code: 'CO',
+    name: 'Colombia'
+  },
+  {
+    code: 'ES',
+    name: 'España'
+  },
+  {
+    code: 'AR',
+    name: 'Argentina'
+  },
+  {
+    code: 'CL',
+    name: 'Chile'
+  },
+  {
+    code: 'PE',
+    name: 'Peru'
+  },
+  {
+    code: 'VE',
+    name: 'Venezuela'
+  },
+  {
+    code: 'BR',
+    name: 'Brasil'
+  },
+  {
+    code: 'MX',
+    name: 'Mexico'
+  }];
 
   constructor() { }
 

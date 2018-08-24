@@ -44,7 +44,7 @@
 
   </div>
 
-  <div class="form-group row" [ngClass]="{ 'has-danger': email.errors?.required && email.touched }">
+  <div class="form-group row" [ngClass]="{ 'has-danger': (email.errors?.required || email.errors?.pattern) && email.touched }">
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-md-8">
 
@@ -66,12 +66,71 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Country</label>
+    <div class="col-md-8">
+      <select 
+        [(ngModel)]="user.country"
+        name="country"
+        class="form-control">
+        <option value="">Select a country</option>
+        <option *ngFor="let country of countries"
+          [value]="country.code"
+        >
+          {{ country.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Gender</label>
+    <div class="col-md-8">
+      <label class="custom-control custom-radio">
+        <input 
+          [(ngModel)]="user.gender"
+          name="gender"
+          value="Male"
+          type="radio"
+          class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Male</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input 
+          [(ngModel)]="user.gender"
+          name="gender"
+          value="Female"
+          type="radio"
+          class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Female</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Gender</label>
+    <div class="col-md-8">
+      <label class="custom-control custom-checkbox">
+        <input 
+          [(ngModel)]="user.agree"
+          name="agree"
+          type="checkbox"
+          class="custom-control-input"
+          required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description"><em>I agree the terms.</em></span>
+      </label>
+    </div>
+  </div>
+
 
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button 
+      <button
           [disabled]="template.invalid"
           type="submit"
           class="btn btn-outline-primary">
@@ -81,3 +140,7 @@
   </div>
 
 </form>
+
+<pre>
+  {{ user | json }}
+</pre>
