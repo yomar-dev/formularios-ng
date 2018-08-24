@@ -16,9 +16,9 @@ export class TemplateComponent {
   constructor() { }
 
   save(template: NgForm) {
-    console.log('Form sended');
     console.log('Template => ', template);
     console.log('Value => ', template.value);
+    console.log('User =>', this.user);
   }
 
 }
