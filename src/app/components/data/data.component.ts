@@ -36,6 +36,8 @@ export class DataComponent {
                               )
       });
 
+      this.formData.setValue(this.user);
+
     /*this.formData = new FormGroup({
     'name': new FormControl('', [
                                   Validators.required,
@@ -55,6 +57,13 @@ export class DataComponent {
   saveChanges() {
     console.log(this.formData.value);
     console.log(this.formData);
+    this.formData.reset({
+      fullname: {
+        'name': '',
+        'lastname': ''
+      },
+      email: ''
+    });
   }
 
 }
