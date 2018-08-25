@@ -27,7 +27,10 @@ export class DataComponent {
                                                     Validators.minLength(4)
                                                   ]
                                 ),
-                      'lastname': new FormControl('', Validators.required)
+                      'lastname': new FormControl('', [
+                                                        Validators.required,
+                                                        this.blockLastname
+                                                      ])
       }),
       'email': new FormControl('', [
                                       Validators.required,
@@ -64,16 +67,25 @@ export class DataComponent {
     );
   }
 
+  blockLastname(control: FormControl): { [s: string]: boolean } {
+    if (control.value === 'miranda') {
+      return {
+        nomiranda: true
+      };
+    }
+    return null;
+  }
+
   saveChanges() {
     console.log(this.formData.value);
     console.log(this.formData);
-    this.formData.reset({
-      fullname: {
-        'name': '',
-        'lastname': ''
-      },
-      email: ''
-    });
+    // this.formData.reset({
+    //   fullname: {
+    //     'name': '',
+    //     'lastname': ''
+    //   },
+    //   email: ''
+    // });
   }
 
 }
