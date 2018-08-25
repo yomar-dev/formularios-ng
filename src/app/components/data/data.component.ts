@@ -40,8 +40,15 @@ export class DataComponent {
                               ),
       'hobbies': new FormArray([
         new FormControl('Play soccer', Validators.required)
-      ])
+      ]),
+      'password': new FormControl('', Validators.required),
+      'password_repeat': new FormControl()
       });
+
+      this.formData.controls['password_repeat'].setValidators([
+        Validators.required,
+        this.isEquals.bind(this.formData)
+      ]);
 
       // this.formData.setValue(this.user);
 
@@ -71,6 +78,16 @@ export class DataComponent {
     if (control.value === 'miranda') {
       return {
         nomiranda: true
+      };
+    }
+    return null;
+  }
+
+  isEquals(control: FormControl): { [s: string]: boolean } {
+    const form: any = this;
+    if (control.value !== form.controls['password'].value) {
+      return {
+        isEquals: true
       };
     }
     return null;
