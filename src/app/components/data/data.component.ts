@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-data',
@@ -13,7 +13,8 @@ export class DataComponent {
       name: 'Yomar',
       lastname: 'Miranda'
     },
-    email: 'yomar@gmail.com'
+    email: 'yomar@gmail.com',
+    // hobbies: ['Play soccer', 'Run', 'Watch series']
   };
 
   constructor() {
@@ -33,10 +34,13 @@ export class DataComponent {
                                       // Validators.email,
                                       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
                                     ]
-                              )
+                              ),
+      'hobbies': new FormArray([
+        new FormControl('Play soccer', Validators.required)
+      ])
       });
 
-      this.formData.setValue(this.user);
+      // this.formData.setValue(this.user);
 
     /*this.formData = new FormGroup({
     'name': new FormControl('', [
@@ -52,6 +56,12 @@ export class DataComponent {
                                   ]
                             )
     });*/
+  }
+
+  addHobby() {
+    (<FormArray>this.formData.controls['hobbies']).push(
+      new FormControl('', Validators.required)
+    );
   }
 
   saveChanges() {
