@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-data',
@@ -41,6 +42,7 @@ export class DataComponent {
       'hobbies': new FormArray([
         new FormControl('Play soccer', Validators.required)
       ]),
+      'username': new FormControl('', Validators.required, this.userExist),
       'password': new FormControl('', Validators.required),
       'password_repeat': new FormControl()
       });
@@ -91,6 +93,20 @@ export class DataComponent {
       };
     }
     return null;
+  }
+
+  userExist(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'yomar-dev') {
+          resolve({ exist: true });
+        } else {
+          resolve(null);
+        }
+      }, 2500);
+    });
+
+    return promise;
   }
 
   saveChanges() {
