@@ -2,6 +2,64 @@
   <small>data</small>
 </h4>
 <hr>
+
+<form [formGroup]="formData" (ngSubmit)="saveChanges()">
+  <div formGroupName="fullname">
+    <div  class="form-group row"
+          [ngClass]="{ 'has-danger': formData.get('fullname').invalid && formData.get('fullname').touched}">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-8">
+        <input 
+          class="form-control"
+          type="text"
+          placeholder="Name"
+          formControlName="name">
+
+        <div *ngIf="formData.get('fullname.name').errors?.required" class="form-control-feedback">
+          This field are required.
+        </div>
+
+        <div *ngIf="formData.get('fullname.name').errors?.minlength" class="form-control-feedback">
+            You must enter at least 4 characters.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Lastname</label>
+      <div class="col-8">
+        <input 
+          class="form-control"
+          type="text"
+          placeholder="Lastname"
+          formControlName="lastname">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Email</label>
+    <div class="col-md-8">
+      <input 
+        class="form-control"
+        type="email"
+        placeholder="Email"
+        formControlName="email">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+  {{ formData.valid }}
+</form>
+
+<!--
 <form [formGroup]="formData" (ngSubmit)="saveChanges()">
   <div>
     <div class="form-group row"
@@ -57,3 +115,5 @@
   </div>
   {{ formData.valid }}
 </form>
+
+-->
