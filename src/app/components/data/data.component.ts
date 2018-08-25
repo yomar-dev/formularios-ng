@@ -52,6 +52,16 @@ export class DataComponent {
         this.isEquals.bind(this.formData)
       ]);
 
+      // Listen changes into form.
+      // this.formData.valueChanges.subscribe((data: any) => {
+      //   console.log(data);
+      // });
+
+      // Listen changes of the one field.
+      this.formData.controls['email'].valueChanges.subscribe((data: any) => {
+        console.log(data);
+      });
+
       // this.formData.setValue(this.user);
 
     /*this.formData = new FormGroup({
